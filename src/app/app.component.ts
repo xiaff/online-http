@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HttpService } from './service/common/common.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,18 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Online HTTP Toolkits for Everyone';
+  url = '';
+  content = '';
+
+  constructor(private httpService: HttpService) { }
+  onSend() {
+    console.log("on send.");
+    console.log("url:", this.url);
+    if (this.url == '') {
+      return;
+    }
+    this.httpService.getResponse(this.url)
+      .then(data => this.content = JSON.stringify(data))
+      .catch(data => this.content = JSON.stringify(data));
+  }
 }
