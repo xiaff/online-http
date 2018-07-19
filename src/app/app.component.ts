@@ -11,7 +11,9 @@ export class AppComponent {
   url = '';
   content = '';
 
-  constructor(private httpService: HttpService) { }
+  constructor(private httpService: HttpService) {
+    this.content = '{"id": 0,"name": "string","org": "string"}';
+  }
   onSend() {
     console.log("on send.");
     console.log("url:", this.url);
@@ -19,7 +21,7 @@ export class AppComponent {
       return;
     }
     this.httpService.getResponse(this.url)
-      .then(data => this.content = JSON.stringify(data))
-      .catch(data => this.content = JSON.stringify(data));
+      .then(data => {this.content = JSON.stringify(data, null, 2); })
+      .catch(data => this.content = JSON.stringify(data, null, 2));
   }
 }

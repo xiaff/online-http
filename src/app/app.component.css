@@ -1,4 +1,7 @@
 .example-full-width {
     width: 620px;
 }
-  
+
+#result{
+    text-align: left;
+}

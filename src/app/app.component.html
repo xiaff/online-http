@@ -16,7 +16,8 @@
     <button mat-raised-button color="primary" (click)="onSend()">Send</button>
   </form>
 
-  <div id="result">{{content}}</div>
-
+  <div id="result">
+    <textarea highlight-js [options]="{}" [ngModel]='content'></textarea>
+  </div>
 
 </div>
